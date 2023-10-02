@@ -17,10 +17,20 @@
         </ul>
     </nav>
     
-    <label>Popular</label></label><input id="popularOf">
-    <div id="weekPopular">Popular of the week</div>
-    <div id="dayPopular">Popular of the day</div>
-    
+    <h1>Popular Movies</h1>
+    <label for="popularity">Select Popularity:</label>
+    <select id="popularity">
+        <option value="week">Popular of the Week</option>
+        <option value="day">Popular of the Day</option>
+    </select>
+
+    <div id="movieList">
+        <!-- Movie list will be populated dynamically using JavaScript -->
+    </div>
+
+    <div id="pagination">
+        <!-- Pagination will be generated dynamically using JavaScript -->
+    </div>
     
     <script src="main.js"></script>
 </body>
