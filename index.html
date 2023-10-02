@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="syle.css">
 </head>
 <body>
+    
     <nav>
         <ul id="ulNav">
             <li class="navItem"><a href="index.html">Home</a></li>
@@ -17,20 +18,25 @@
         </ul>
     </nav>
     
-    <h1>Popular Movies</h1>
-    <label for="popularity">Select Popularity:</label>
-    <select id="popularity">
-        <option value="week">Popular of the Week</option>
-        <option value="day">Popular of the Day</option>
-    </select>
+    <main>
+        <div class="dropdown">
+            <button class="movies-button">Popular movies</button>
+            <div class="dropdown-content">
+                <a href="#">On top today</a>
+                <a href="#">Popular of the week</a>
+            </div>
+        </div>
 
-    <div id="movieList">
-        <!-- Movie list will be populated dynamically using JavaScript -->
-    </div>
+        <div id="movieList">
+            <!-- Movie list will be populated dynamically using JavaScript -->
+        </div>
 
-    <div id="pagination">
-        <!-- Pagination will be generated dynamically using JavaScript -->
-    </div>
+        <div id="pagination">
+            <!-- Pagination will be generated dynamically using JavaScript -->
+        </div>
+    </main>
+
+    <footer></footer>
     
     <script src="main.js"></script>
 </body>

@@ -1,0 +1,85 @@
+body{
+    background-image: url(../JSproject/Arcane.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: aliceblue;
+}
+
+nav{
+    position: absolute;
+    
+    border-radius: 10px;
+}
+
+#ulNav{
+    display: flex;
+    color: white;
+    gap: 50px;
+    list-style: none;
+    text-decoration: none;
+    padding: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+a {
+    text-decoration: none; /* Remova o sublinhado padrão */
+    color:antiquewhite; /* Cor do texto padrão */
+    font-size: 18px; /* Tamanho da fonte padrão */
+    transition: all 0.2s; /* Adicione uma transição suave para o efeito hover */
+}
+
+a:hover {
+    color:aliceblue; /* Cor mais clara para o hover */
+    font-size: 22px; /* Tamanho da fonte um pouco maior no hover */
+    text-decoration: underline; /* Sublinhado no hover */
+}
+
+main{
+    position: fixed;
+    margin-top: 30%;
+}
+
+.movies-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 160%;
+}
+
+/* Estilos para a lista suspensa (dropdown) */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1857af;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    color: white;
+}
+
+/* Estilos para os itens da lista suspensa */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Estilos para os itens da lista suspensa no hover */
+.dropdown-content a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Mostrar a lista suspensa quando o botão é hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
