@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+}
+nav{
+    position: absolute;
+    
+    border-radius: 10px;
+}
+
+#ulNav{
+    display: flex;
+    color: white;
+    gap: 50px;
+    list-style: none;
+    text-decoration: none;
+    padding: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+a {
+    text-decoration: none; /* Remova o sublinhado padrão */
+    color:antiquewhite; /* Cor do texto padrão */
+    font-size: 18px; /* Tamanho da fonte padrão */
+    transition: all 0.2s; /* Adicione uma transição suave para o efeito hover */
+}
+
+a:hover {
+    color:aliceblue; /* Cor mais clara para o hover */
+    font-size: 22px; /* Tamanho da fonte um pouco maior no hover */
+    text-decoration: underline; /* Sublinhado no hover */
+}
