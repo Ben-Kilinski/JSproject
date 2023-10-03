@@ -1,5 +1,8 @@
 body{
     background-color: black;
+    background-image: url(../JSproject/images/DoorMonsters.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
 }
 nav{
     position: absolute;

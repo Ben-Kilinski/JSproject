@@ -1,12 +1,11 @@
 body{
-    background-image: url(../JSproject/batman.png);
+    background-image: url(../JSproject/images/netflix.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: aliceblue;
 }
 nav{
     position: absolute;
-    
     border-radius: 10px;
 }
 

@@ -1,5 +1,5 @@
 body{
-    background-image: url(../JSproject/Arcane.jpg);
+    background-image: url(../JSproject/images/Arcane.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: aliceblue;
@@ -7,9 +7,9 @@ body{
 
 
 nav{
-    position: absolute;
-    
-    border-radius: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 #ulNav{
@@ -38,8 +38,7 @@ a:hover {
 
 
 main{
-    position: fixed;
-    margin-top: 30%;
+    margin-top: 20%;
 }
 
 
@@ -85,4 +84,23 @@ main{
 /* Mostrar a lista suspensa quando o botão é hover */
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* --------------------PAGINATION-------------------------------- */
+#popMovies {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.homeMovies {
+    width: 250px;
+    height: 350px;
+    border: 10px solid black;
+    display: inline-block;
+    margin-right: 10px;
+    /* padding: 1px; */
 }
