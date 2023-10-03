@@ -8,7 +8,8 @@ const options = {
 
 const api_urlDay = "https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=1"
 const api_urlWeek = "https://api.themoviedb.org/3/trending/movie/week?language=en-US&page=1"
-            
+const api_urlSearch = "https://api.themoviedb.org/3/keyword/{keyword_id}/movies"        
+const teste = "https://api.themoviedb.org/3/discover/movie"
 
 const popMovies = document.getElementById("popMovies")
 const buttonDay = document.getElementById("buttonDay")
@@ -56,9 +57,9 @@ function getMoviesWeek() {
 
         .catch(error => console.log(error));
 }
-
-
 //----------------------pagination------------------------------------------
+
+
 
 
 

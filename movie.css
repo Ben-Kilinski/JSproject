@@ -1,5 +1,6 @@
 body{
     background-color: black;
+    color: white;
 }
 nav{
     position: absolute;
@@ -29,4 +30,8 @@ a:hover {
     color:aliceblue; /* Cor mais clara para o hover */
     font-size: 22px; /* Tamanho da fonte um pouco maior no hover */
     text-decoration: underline; /* Sublinhado no hover */
+}
+
+#movie-details{
+    
 }

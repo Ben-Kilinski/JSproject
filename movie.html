@@ -1,13 +1,55 @@
 <!-- 2. single movie page that show all the information about the movie including the
 list of actors.
 a. add input that receives an id from the user and searches the movie -->
-<link rel="stylesheet" href="movie.css">
-<nav>
-    <ul id="ulNav">
-        <li class="navItem"><a href="index.html">Home</a></li>
-        <li class="navItem"><a href="search.html">Search</a></li>
-        <li class="navItem"><a href="movie.html">Movie</a></li>
-        <li class="navItem"><a href="favorites.html">Favorites</a></li>
-        <li class="navItem"><a href="about.html">About</a></li>
-    </ul>
-</nav>
+<head>
+    <link rel="stylesheet" href="movie.css">
+</head>
+
+<body>
+    <nav>
+        <ul id="ulNav">
+            <li class="navItem"><a href="index.html">Home</a></li>
+            <li class="navItem"><a href="search.html">Search</a></li>
+            <li class="navItem"><a href="movie.html">Movie</a></li>
+            <li class="navItem"><a href="favorites.html">Favorites</a></li>
+            <li class="navItem"><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div id="movie-details"></div>
+</body>
+
+
+<script>
+
+    const options = {
+        method: 'GET',
+        headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMTQxZDY0ZTQyOWRiNGFiNDFjMDU1NGE4MGY0MDkwZiIsInN1YiI6IjY1MWE4NjEyZWE4NGM3MDEwYzEzOGFlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QmBsb0LIN7ieO3P2dJwuiUZw74HQHwrhlTXcaVKNI7w'
+        }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieId = urlParams.get("id");
+
+    const api_urlMovie = `https://api.themoviedb.org/3/movie/${movieId}?api_key=3141d64e429db4ab41c0554a80f4090f&language=en-US`;
+
+    const movieDetails = document.getElementById("movie-details");
+
+    fetch(api_urlMovie, options)
+        .then(res => res.json())
+        .then(movieData => {
+            // Exiba os detalhes do filme na página.
+            movieDetails.innerHTML = `
+                <img src="http://image.tmdb.org/t/p/w500${movieData.poster_path}" style="width: 250px; height: 350px; border: 2px solid black;">
+                <h1>${movieData.title}</h1>
+                <p>${movieData.overview}</p>
+                <p>Year: ${movieData.release_date}</p>
+                <p>Avaliação: ${movieData.vote_average}</p>
+                <p>popularity: ${movieData.popularity}</p>
+                <p>${movieData.original_language}</p>
+            `;
+        })
+        .catch(error => console.log(error));
+</script>
