@@ -9,3 +9,33 @@
         <li class="navItem"><a href="about.html">About</a></li>
     </ul>
 </nav>
+<h1>My list</h1>
+<ul id="favorites-list"></ul>
+
+<script>
+    const options = {
+        method: 'GET',
+        headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMTQxZDY0ZTQyOWRiNGFiNDFjMDU1NGE4MGY0MDkwZiIsInN1YiI6IjY1MWE4NjEyZWE4NGM3MDEwYzEzOGFlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QmBsb0LIN7ieO3P2dJwuiUZw74HQHwrhlTXcaVKNI7w'
+        }
+    };
+    
+    document.addEventListener('DOMContentLoaded', function() {
+    const favoritesListElement = document.getElementById('favorites-list');
+    
+    // Recupera a lista de favoritos do localStorage
+    const favoritesList = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+    favoritesList.forEach(movieData => {
+        const listItem = document.createElement('li');
+        const movieImage = document.createElement('img');
+        movieImage.src = `http://image.tmdb.org/t/p/w500${movieData.poster_path}`;
+        listItem.appendChild(movieImage);
+        listItem.appendChild(document.createTextNode(movieData.title));
+        favoritesListElement.appendChild(listItem);
+    });
+});
+
+
+</script>

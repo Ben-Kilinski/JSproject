@@ -42,14 +42,48 @@ a. add input that receives an id from the user and searches the movie -->
         .then(movieData => {
             // Exiba os detalhes do filme na página.
             movieDetails.innerHTML = `
-                <img src="http://image.tmdb.org/t/p/w500${movieData.poster_path}" style="width: 250px; height: 350px; border: 2px solid black;">
-                <h1>${movieData.title}</h1>
-                <p>${movieData.overview}</p>
-                <p>Year: ${movieData.release_date}</p>
-                <p>Avaliação: ${movieData.vote_average}</p>
-                <p>popularity: ${movieData.popularity}</p>
-                <p>${movieData.original_language}</p>
-            `;
+            <div class="movie-container">
+                <div class="movie-image">    
+                    <img src="http://image.tmdb.org/t/p/w500${movieData.poster_path}">
+                </div>
+                <div class="movie-details">
+                    <h1>${movieData.title}</h1>
+                    <p>${movieData.overview}</p>
+                    <p>Release: ${movieData.release_date}</p>
+                    <p>Popularity: ${movieData.popularity}</p>
+                    <p>Avaliation: ${movieData.vote_average}</p>
+                    <p>Language: ${movieData.original_language}</p>
+                    <button class="like-button">like</button>
+                </div>    
+            </div>`;
         })
         .catch(error => console.log(error));
+
+    
+    
+    document.addEventListener('DOMContentLoaded', function() {
+    const likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const movieData = {
+                title: "Título do Filme",
+                poster_path: "caminho/para/a/imagem.jpg",
+                // Outros dados do filme
+            };
+            
+            // Recupera a lista de favoritos atual do localStorage
+            const favoritesList = JSON.parse(localStorage.getItem('favorites')) || [];
+            
+            // Adiciona o filme à lista de favoritos
+            favoritesList.push(movieData);
+
+            // Armazena a lista de favoritos atualizada no localStorage
+            localStorage.setItem('favorites', JSON.stringify(favoritesList));
+            
+            alert(`Filme "${movieData.title}" adicionado aos favoritos.`);
+        });
+    });
+});
+
 </script>

@@ -1,6 +1,6 @@
 body{
     background-color: black;
-    color: white;
+    color:antiquewhite;
 }
 nav{
     position: absolute;
@@ -32,6 +32,50 @@ a:hover {
     text-decoration: underline; /* Sublinhado no hover */
 }
 
-#movie-details{
-    
-}
+.movie-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Tamanho da tela inteira */
+  }
+  
+  .movie-image {
+    flex: 0 0 auto; /* Não dimensiona horizontalmente, mantém o tamanho original */
+    margin-right: 20px; /* Espaço entre a imagem e os detalhes */
+  }
+  
+  .movie-image img {
+    width: 25vw;
+    height: auto;
+    border: 2px solid black;
+    vertical-align: top;
+  }
+  
+  .movie-details {
+    font-size: 110%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    width: 30vw;
+    text-align: justify;
+    align-self: flex-start;
+    padding-top: 50px;
+  }
+
+
+  .like-button {
+    background-color: #0a6ed9;
+    color: #ffffff;
+    border: 2px solid #333;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .like-button:hover {
+    background-color: #09d30f;
+    color: #ffffff;
+  }
+
+  .like-button:active {
+    background-color: #09d30f;
+  }
