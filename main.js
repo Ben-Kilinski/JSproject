@@ -6,29 +6,57 @@ const options = {
     }
   };
 
-const api_url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=1"
+const api_urlDay = "https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=1"
+const api_urlWeek = "https://api.themoviedb.org/3/trending/movie/week?language=en-US&page=1"
+            
 
 const popMovies = document.getElementById("popMovies")
+const buttonDay = document.getElementById("buttonDay")
+const buttonWeek = document.getElementById("buttonWeek")
 
-function getMovies() {
-    fetch(api_url, options)
+buttonDay.addEventListener("click", getMoviesDay)
+buttonWeek.addEventListener("click", getMoviesWeek)
+
+function getMoviesDay() {
+    fetch(api_urlDay, options)
+        .then(res => res.json())
+
+        .then(data => {console.log(data)
+             
+            popMovies.innerHTML = ""
+            
+            data.results.forEach(data => {
+                popMovies.innerHTML += 
+                    `<div class="homeMovies">
+                    <img src="http://image.tmdb.org/t/p/w500${data.poster_path}" style="width: 250px; height: 350px; border: 2px solid black;">    
+                    ${data.title}
+                    </div>`
+                }); 
+        })
+
+        .catch(error => console.log(error));
+}
+
+function getMoviesWeek() {
+    fetch(api_urlWeek, options)
         .then(res => res.json())
 
         .then(data => {console.log(data)
             
+            popMovies.innerHTML = ""
+
             data.results.forEach(data => {
                 popMovies.innerHTML += 
-            `<div class="homeMovies">
-            <img src="http://image.tmdb.org/t/p/w500${data.poster_path}" style="width: 250px; height: 350px; border: 2px solid black;">    
-            ${data.title}
-                <img>
-            </div>`
+                `<div class="homeMovies">
+                <img src="http://image.tmdb.org/t/p/w500${data.poster_path}" style="width: 250px; height: 350px; border: 2px solid black;">    
+                ${data.title}
+                </div>`
             }); 
         })
 
         .catch(error => console.log(error));
 }
-getMovies()
+
 
 //----------------------pagination------------------------------------------
 
