@@ -1,6 +1,6 @@
 body{
     background-color: black;
-    color:antiquewhite;
+    color:rgb(212, 212, 212);
 }
 nav{
     position: absolute;
@@ -55,10 +55,19 @@ a:hover {
   .movie-details {
     font-size: 110%;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    width: 30vw;
+    width: 60vw;
     text-align: justify;
     align-self: flex-start;
     padding-top: 50px;
+  }
+
+  #casting{
+    font-size: 85%;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
   }
 
 

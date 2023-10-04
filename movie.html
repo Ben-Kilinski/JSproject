@@ -21,7 +21,7 @@ a. add input that receives an id from the user and searches the movie -->
 
 
 <script>
-
+// autorizaçao api-----------------------
     const options = {
         method: 'GET',
         headers: {
@@ -30,13 +30,13 @@ a. add input that receives an id from the user and searches the movie -->
         }
     };
 
+//base dom e api links ---------------------
     const urlParams = new URLSearchParams(window.location.search);
     const movieId = urlParams.get("id");
-
     const api_urlMovie = `https://api.themoviedb.org/3/movie/${movieId}?api_key=3141d64e429db4ab41c0554a80f4090f&language=en-US`;
-
     const movieDetails = document.getElementById("movie-details");
 
+//fetch movie-------------------------------------
     fetch(api_urlMovie, options)
         .then(res => res.json())
         .then(movieData => {
@@ -53,37 +53,31 @@ a. add input that receives an id from the user and searches the movie -->
                     <p>Popularity: ${movieData.popularity}</p>
                     <p>Avaliation: ${movieData.vote_average}</p>
                     <p>Language: ${movieData.original_language}</p>
-                    <button class="like-button">like</button>
+                    <button class="like-button">like</button><br>
+                    <sec id="casting">Cast:</sec>
                 </div>    
             </div>`;
         })
         .catch(error => console.log(error));
 
-    
-    
-    document.addEventListener('DOMContentLoaded', function() {
-    const likeButtons = document.querySelectorAll('.like-button');
+//fetch actors-----------------------------------------
+    const castApiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
 
-    likeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const movieData = {
-                title: "Título do Filme",
-                poster_path: "caminho/para/a/imagem.jpg",
-                // Outros dados do filme
-            };
-            
-            // Recupera a lista de favoritos atual do localStorage
-            const favoritesList = JSON.parse(localStorage.getItem('favorites')) || [];
-            
-            // Adiciona o filme à lista de favoritos
-            favoritesList.push(movieData);
+    fetch(castApiUrl, options)
+        .then(res => res.json())
+        .then(castData => {
+            // Extrair a lista de atores do elenco (cast) do filme
+            const castList = castData.cast;
 
-            // Armazena a lista de favoritos atualizada no localStorage
-            localStorage.setItem('favorites', JSON.stringify(favoritesList));
-            
-            alert(`Filme "${movieData.title}" adicionado aos favoritos.`);
-        });
-    });
-});
+            // Transformar a lista de atores em uma string formatada para exibição
+            const castString = castList.map(actor => actor.name).join(', ');
+
+            // Selecionar o elemento HTML onde você deseja exibir o elenco
+            const castElement = document.querySelector('sec');
+
+            // Atualizar o elemento HTML com os detalhes do elenco
+            castElement.innerHTML = `Cast: ${castString}`;
+        })
+        .catch(error => console.log(error));
 
 </script>
