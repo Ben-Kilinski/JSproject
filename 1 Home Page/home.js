@@ -48,7 +48,7 @@ function getMoviesWeek() {
             data.results.forEach(data => {
                 popMovies.innerHTML += 
                 `<div class="homeMovies">
-                <img src="http://image.tmdb.org/t/p/w500${data.poster_path}" style="width: 250px; height: 350px; border: 2px solid black;">    
+                <img src="http://image.tmdb.org/t/p/w500${data.poster_path}" style="width: 200px; height: 300px; border: 2px solid black;">    
                 ${data.title}
                 </div>`
             }); 

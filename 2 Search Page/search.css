@@ -7,7 +7,7 @@ body{
 
 body::before {
     content: ""; /* Adiciona um conteúdo vazio à pseudo-classe */
-    background-image: url(../JSproject/images/netflix.jpg);
+    background-image: url(../images/netflix.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     position: fixed; /* Para cobrir toda a tela */
