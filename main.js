@@ -56,7 +56,29 @@ function getMoviesWeek() {
 
         .catch(error => console.log(error));
 }
-//----------------------pagination------------------------------------------
+// --------------------------animation ---------------------------------
+
+function startTextAnimation() {
+    const textElement = document.getElementById("textAnimation");
+    setTimeout(() => {
+        textElement.style.animation = "blink 3s infinite"; // Blink "Hello" for 3 seconds
+        textElement.textContent = "Hello";
+        setTimeout(() => {
+            textElement.style.animation = "blink 3s infinite"; // Blink "Welcome" for 3 seconds
+            textElement.textContent = "Welcome to the Dark Side";
+            setTimeout(() => {
+                textElement.style.animation = "lightEffect 0.5s"; // Disappear with light effect
+                textElement.textContent = "";
+            }, 3000); // Wait for 3 seconds before disappearing with light effect
+        }, 3000); // Wait for 3 seconds before switching to "Welcome"
+    }, 2000); // Wait for 2 seconds before starting the animation
+}
+
+startTextAnimation();
+
+
+
+
 
 
 
