@@ -34,7 +34,7 @@ function getMovieSearch() {
             movieElements.forEach(movieElement => {
                 movieElement.addEventListener("click", function() {
                     const movieId = movieElement.getAttribute("data-movie-id");
-                    window.location.href = `movie.html?id=${movieId}`; // Redireciona para a página "movie.html" com o ID do filme como parâmetro
+                    window.location.href = `../3 Movie Page/movie.html?id=${movieId}`; // Redireciona para a página "movie.html" com o ID do filme como parâmetro
                 });
             });
 
