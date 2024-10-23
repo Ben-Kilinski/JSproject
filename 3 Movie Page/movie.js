@@ -1,24 +1,24 @@
-// autorizaçao api-----------------------
+// Autorizaçao API-----------------------
 const options = {
     method: 'GET',
     headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMTQxZDY0ZTQyOWRiNGFiNDFjMDU1NGE4MGY0MDkwZiIsInN1YiI6IjY1MWE4NjEyZWE4NGM3MDEwYzEzOGFlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QmBsb0LIN7ieO3P2dJwuiUZw74HQHwrhlTXcaVKNI7w'
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMTQxZDY0ZTQyOWRiNGFiNDFjMDU1NGE4MGY0MDkwZiIsInN1YiI6IjY1MWE4NjEyZWE4NGM3MDEwYzEzOGFlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QmBsb0LIN7ieO3P2dJwuiUZw74HQHwrhlTXcaVKNI7w'
     }
 };
 
-//base dom e api links ---------------------
+// Base DOM e API links ---------------------
 const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get("id");
 const api_urlMovie = `https://api.themoviedb.org/3/movie/${movieId}?api_key=3141d64e429db4ab41c0554a80f4090f&language=en-US`;
 const movieDetails = document.getElementById("movie-details");
 const castApiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
 
-//fetch movie-------------------------------------
+// Fetch movie-------------------------------------
 fetch(api_urlMovie, options)
     .then(res => res.json())
     .then(movieData => {
-        // Exiba os detalhes do filme na página.
+        // Exibe os detalhes do filme na página.
         movieDetails.innerHTML = `
         <div class="movie-container">
             <div class="movie-image">    
@@ -35,31 +35,29 @@ fetch(api_urlMovie, options)
                 <sec id="casting">Cast:</sec>
             </div>    
         </div>`;
+
+        // ------- like button ---------
+        const likeButton = document.querySelector(".like-button");
+        likeButton.addEventListener("click", () => {
+            let favorites = JSON.parse(localStorage.getItem("favorites")) || []; // Recupera favoritos ou inicializa um array vazio
+            if (!favorites.includes(movieId)) { // Evita adicionar duplicatas
+                favorites.push(movieId); 
+                localStorage.setItem("favorites", JSON.stringify(favorites)); // Salva no localStorage
+                console.log(`Filme ${movieId} adicionado aos favoritos`);
+            } else {
+                console.log('Filme já está nos favoritos');
+            }
+        });
     })
     .catch(error => console.log(error));
 
-//fetch actors-----------------------------------------
+// Fetch actors-----------------------------------------
 fetch(castApiUrl, options)
     .then(res => res.json())
     .then(castData => {
-        // Extrair a lista de atores do elenco (cast) do filme
         const castList = castData.cast;
-
-        // Transformar a lista de atores em uma string formatada para exibição
         const castString = castList.map(actor => actor.name).join(', ');
-
-        // Selecionar o elemento HTML onde você deseja exibir o elenco
-        const castElement = document.querySelector('sec');
-
-        // Atualizar o elemento HTML com os detalhes do elenco
+        const castElement = document.getElementById('casting');
         castElement.innerHTML = `Cast: ${castString}`;
     })
     .catch(error => console.log(error));
-
-// ------- like button ---------//
-    const like = document.getElementById("like-button") 
-    const favorites = []
-    function addToFavorites() {
-        favorites.push(movieData.id)
-    }
-    like.addEventListener("click", addMovieToFavorite)
