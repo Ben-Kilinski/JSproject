@@ -33,3 +33,56 @@ a:hover {
     font-size: 22px; /* Tamanho da fonte um pouco maior no hover */
     text-decoration: underline; /* Sublinhado no hover */
 }
+
+h1 {
+    padding-top: 80px;
+    color: antiquewhite;
+}
+
+
+#favorites-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 20px;
+    white-space: nowrap;
+    max-height: 300px; /* Define a altura máxima do container */
+    border: 1px solid #ccc;
+    scroll-behavior: smooth; /* Para suavizar o scroll */
+    overflow-y: hidden; /* Esconde o scroll vertical */
+}
+
+.favorite-movie {
+    display: inline-block;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.favorite-movie img {
+    width: 150px; /* Tamanho menor para os cartazes */
+    height: auto;
+    border-radius: 8px;
+}
+
+.remove-btn {
+    margin-top: 10px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #ff8888;
+}
+
+.remove-btn:active {
+    background-color: #ff0000;
+}
+
+p {
+    text-align: center;
+}
