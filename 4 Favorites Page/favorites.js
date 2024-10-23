@@ -8,10 +8,22 @@ const options = {
 };
 
 // Pega os favoritos do localStorage
-const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 // Seleciona o elemento onde os filmes favoritos serão exibidos
 const favoritesList = document.getElementById("favorites-list");
+
+// Função para remover um filme dos favoritos
+function removeFromFavorites(movieId) {
+    favorites = favorites.filter(id => id !== movieId); // Remove o filme do array
+    localStorage.setItem("favorites", JSON.stringify(favorites)); // Atualiza o localStorage
+    document.getElementById(`movie-${movieId}`).remove(); // Remove o filme da lista visualmente
+    console.log(`Filme ${movieId} removido dos favoritos`);
+    
+    if (favorites.length === 0) {
+        favoritesList.innerHTML = "<p>Nenhum filme nos favoritos</p>"; // Exibe mensagem se não restarem favoritos
+    }
+}
 
 // Verifica se há filmes nos favoritos
 if (favorites.length === 0) {
@@ -26,13 +38,14 @@ if (favorites.length === 0) {
         fetch(api_urlMovie, options)
             .then(res => res.json())
             .then(movieData => {
-                // Constrói o HTML para cada filme
+                // Constrói o HTML para cada filme com o botão "Remove"
                 htmlContent += `
-                    <div class="favorite-movie">
+                    <div class="favorite-movie" id="movie-${movieId}">
                         <img src="http://image.tmdb.org/t/p/w500${movieData.poster_path}" alt="${movieData.title}">
                         <h2>${movieData.title}</h2>
                         <p>${movieData.overview}</p>
                         <p>Release: ${movieData.release_date}</p>
+                        <button onclick="removeFromFavorites('${movieId}')">Remove</button>
                     </div>
                 `;
 
