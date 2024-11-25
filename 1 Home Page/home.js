@@ -24,7 +24,7 @@ function getMoviesDay() {
 
         .then(data => {console.log(data)
              
-            popMovies.innerHTML = ""
+            popMovies.innerHTML = "" 
             
             data.results.forEach(data => {
                 popMovies.innerHTML += 

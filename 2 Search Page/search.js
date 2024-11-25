@@ -1,3 +1,4 @@
+// object, save in a const, contains all the requeriments to the api 
 const options = {
     method: 'GET',
     headers: {
@@ -6,12 +7,13 @@ const options = {
     }
 };
 
+//"import elements (imput, confirm btn) from html to dom"
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const searchResults = document.getElementById("searchResults");
 
 function getMovieSearch() {
-    const query = searchInput.value; // Obter o valor do campo de entrada
+    const query = searchInput.value; //searched movie saved in a const 
     const api_urlSearch = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
 
     fetch(api_urlSearch, options)
