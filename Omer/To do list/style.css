@@ -1,0 +1,84 @@
+html{
+    background-color: tomato;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:center;
+    margin-top: 5%;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    font-size: x-large;
+    font-weight: 600;
+    font-style: bold;
+    background-color: tomato;
+    color: rgba(0, 0, 0, 0.655);
+}
+
+#form_sub_row{
+    display: flex;
+    flex-direction: row;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o input e o botão */
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    flex-grow: 1; /* O input ocupará o máximo de espaço disponível */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4cafaf;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 600;
+    font-style: bold;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+ul li{
+    margin-block: 16px;
+}
+ label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 0.4rem;
+ }
+
+ /* Exemplo de estilo para botão de toggle ativado */
+button.toggled {
+    background-color: #4caf50; /* Cor de fundo quando ativado */
+    color: white; /* Cor do texto quando ativado */
+}
+
